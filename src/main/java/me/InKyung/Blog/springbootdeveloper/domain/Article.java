@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Article{
     @Id // id 필드를 기본 지정
-    @GeneratedValue // 기본키 자동으로 1씩 증가
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동으로 1씩 증가
     @Column(name = "id", updatable = false)
     private Long id;
 
