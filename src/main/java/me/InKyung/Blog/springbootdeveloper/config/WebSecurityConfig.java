@@ -4,15 +4,13 @@ import lombok.RequiredArgsConstructor;
 import me.InKyung.Blog.springbootdeveloper.service.UserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
 import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
-
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 @RequiredArgsConstructor
 @Configuration
 public class WebSecurityConfig {
@@ -31,30 +29,30 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeRequests() // 인증, 인가 설정
+                .authorizeRequests()
                 .requestMatchers("/login", "/signup", "/user").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin() // 폼 기반 로그인 설정
-                .loginPage("/login")
-                .defaultSuccessUrl("/articles")
-                .and()
-                .logout() // 로그아웃 설정
-                .logoutSuccessUrl("/login")
-                .invalidateHttpSession(true)
-                .and()
-                .csrf().disable() // csrf 비활성화
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/articles")
+                )
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login")
+                        .invalidateHttpSession(true)
+                )
+                .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
-
     // 인증 관리자 관련 설정
     @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailService userDetailService) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(userService) // 사용자 정보 서비스 설정
-                .passwordEncoder(bCryptPasswordEncoder)
-                .and()
-                .build();
+    public DaoAuthenticationProvider daoAuthenticationProvider() throws Exception {
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+
+        daoAuthenticationProvider.setUserDetailsService(userService);
+        daoAuthenticationProvider.setPasswordEncoder(bCryptPasswordEncoder());
+
+        return daoAuthenticationProvider;
     }
 
     // 패스워드 인코더로 사용할 빈 등록
