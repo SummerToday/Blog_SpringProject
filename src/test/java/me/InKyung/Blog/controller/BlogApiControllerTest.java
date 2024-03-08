@@ -1,4 +1,4 @@
-package me.InKyung.Blog.springbootdeveloper.controller;
+package me.InKyung.Blog.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
