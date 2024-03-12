@@ -24,4 +24,8 @@ public class UserService {
                 .password(bCryptPasswordEncoder.encode(dto.getPassword())) // 패스워드 암호화
                 .build()).getId();
     }
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
+    }
 }
