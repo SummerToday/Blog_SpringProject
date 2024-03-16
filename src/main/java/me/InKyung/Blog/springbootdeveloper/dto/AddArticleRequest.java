@@ -14,10 +14,11 @@ public class AddArticleRequest { // 서비스계층에서 요청 받은 데이�
     private String title;
     private String content;
 
-    public Article toEntity() { // 생성자를 사용해 객체 생성
+    public Article toEntity(String author) { // 생성자를 사용해 객체 생성
         return Article.builder()
                 .title(title)
                 .content(content)
+                .author(author)
                 .build(); // 빌더 패턴을 사용해 DTO를 엔티티로 만들어주는 메소드.
     }
 }
