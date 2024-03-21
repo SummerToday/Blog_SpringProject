@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class User implements UserDetails { // UserDetails를 상속 받아 인증 객체로 사용
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,58 +26,58 @@ public class User implements UserDetails { // UserDetails를 상속 받아 인�
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
     @Column(name = "nickname", unique = true)
     private String nickname;
 
-
     @Builder
-    public User(String email, String password, String auth, String nickname) {
+    public User(String email, String password, String nickname) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
     }
 
-    @Override // 권한 반환
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("user"));
-    }
-
-    // 사용자 이름 변경
     public User update(String nickname) {
         this.nickname = nickname;
 
         return this;
     }
 
-    @Override // 사용자의 id를 반환 (고유한 값)
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("user"));
+    }
+
+    @Override
     public String getUsername() {
         return email;
     }
 
-    @Override // 사용자의 패스워드를 반환
+    @Override
     public String getPassword() {
         return password;
     }
 
-    @Override // 계정 만료 여부 반환
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
-    @Override // 계정 잠금 여부 반환
+    @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
-    @Override // 패스워드의 만료 여부 반환
+    @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
-    @Override // 계정 사용 가능 여부 반환
+    @Override
     public boolean isEnabled() {
         return true;
     }
