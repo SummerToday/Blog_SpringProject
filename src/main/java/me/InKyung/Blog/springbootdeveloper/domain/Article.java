@@ -1,25 +1,29 @@
 package me.InKyung.Blog.springbootdeveloper.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 
 import java.time.LocalDateTime;
 
-@Entity // 엔티티로 지정
+@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@NoArgsConstructor
-public class Article{
-    @Id // id 필드를 기본 지정
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동으로 1씩 증가
+@Entity
+public class Article {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "title", nullable = false) // 'title'이라는 not null 컬럼과 매핑
+    @Column(name = "title", nullable = false)
     private String title;
 
     @Column(name = "content", nullable = false)
@@ -28,11 +32,11 @@ public class Article{
     @Column(name = "author", nullable = false)
     private String author;
 
-    @CreatedDate // 엔티티가 생성될 때 생성 시간 저장
+    @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @LastModifiedDate // 엔티티가 수정될 때 수정 시간 저장
+    @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
@@ -47,5 +51,4 @@ public class Article{
         this.title = title;
         this.content = content;
     }
-
 }
