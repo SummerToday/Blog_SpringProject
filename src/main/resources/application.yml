@@ -5,9 +5,10 @@ spring:
       hibernate:
         format_sql: true
     defer-datasource-initialization: true
-  datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
+  # AWS RDS 사용으로 인한 주석화.
+  #datasource:
+    #url: jdbc:h2:mem:testdb
+    #username: sa 
   h2:
     console:
       enabled: true
