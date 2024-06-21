@@ -17,7 +17,11 @@ jobs:
           java-version: '17'
 
       - name: Set up environment variables
-        run: echo "MY_ENV_VAR=value" >> $GITHUB_ENV
+        run: |
+          echo "SPRING_PROFILES_ACTIVE=test" >> $GITHUB_ENV
+          echo "OAUTH2_CLIENT_ID=your-client-id" >> $GITHUB_ENV
+          echo "OAUTH2_CLIENT_SECRET=your-client-secret" >> $GITHUB_ENV
+          echo "OAUTH2_CLIENT_PROVIDER=your-provider" >> $GITHUB_ENV
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
