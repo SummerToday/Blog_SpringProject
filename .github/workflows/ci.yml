@@ -16,16 +16,8 @@ jobs:
           distribution: 'corretto'
           java-version: '17'
 
-      - name: Set up environment variables
-        run: |
-          echo "SPRING_PROFILES_ACTIVE=test" >> $GITHUB_ENV
-          echo "OAUTH2_CLIENT_ID=${{ secrets.OAUTH2_CLIENT_ID }}" >> $GITHUB_ENV
-          echo "OAUTH2_CLIENT_SECRET=${{ secrets.OAUTH2_CLIENT_SECRET }}" >> $GITHUB_ENV
-          echo "OAUTH2_CLIENT_PROVIDER=google" >> $GITHUB_ENV
-          echo "JWT_SECRET=study-springboot" >> $GITHUB_ENV
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew clean build --warning-mode all
+        run: ./gradlew clean build
