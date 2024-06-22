@@ -23,11 +23,6 @@ jobs:
           echo "OAUTH2_CLIENT_SECRET=${{ secrets.OAUTH2_CLIENT_SECRET }}" >> $GITHUB_ENV
           echo "OAUTH2_CLIENT_PROVIDER=google" >> $GITHUB_ENV
           echo "JWT_SECRET=study-springboot" >> $GITHUB_ENV
-          
-          # 환경 변수 로그 출력
-          echo "OAUTH2_CLIENT_ID=${{ secrets.OAUTH2_CLIENT_ID }}"
-          echo "OAUTH2_CLIENT_SECRET=${{ secrets.OAUTH2_CLIENT_SECRET }}"
-          echo "JWT_SECRET=study-springboot"
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
