@@ -44,6 +44,6 @@ dependencies {
 	testImplementation 'org.projectlombok:lombok'
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
