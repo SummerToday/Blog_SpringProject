@@ -44,6 +44,11 @@ dependencies {
 	testImplementation 'org.projectlombok:lombok'
 }
 
+jar {
+	enabled = false
+}
+
+
 test {
 	useJUnitPlatform()
 }
