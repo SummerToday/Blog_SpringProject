@@ -66,7 +66,7 @@ public class WebOAuthSecurityConfig {
                         .invalidateHttpSession(true)
                         .permitAll())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login", "/signup", "/user", "/oauth2/**").permitAll()
+                        .requestMatchers("/api/token").permitAll()
                         .requestMatchers("/api/**").authenticated()
                         .anyRequest().permitAll())
                 .sessionManagement(sessionManagement -> sessionManagement
@@ -75,11 +75,11 @@ public class WebOAuthSecurityConfig {
                         .defaultAuthenticationEntryPointFor(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
                                 new AntPathRequestMatcher("/api/**")));
 
+        // 토큰 인증 필터 추가
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
-
 
     @Bean
     public OAuth2SuccessHandler oAuth2SuccessHandler() {

@@ -24,7 +24,9 @@ public class TokenProvider {
 
     public String generateToken(User user, Duration expiredAt) {
         Date now = new Date();
-        return makeToken(new Date(now.getTime() + expiredAt.toMillis()), user);
+        String token = makeToken(new Date(now.getTime() + expiredAt.toMillis()), user);
+        System.out.println("Generated Token: " + token);
+        return token;
     }
 
     private String makeToken(Date expiry, User user) {
@@ -46,20 +48,23 @@ public class TokenProvider {
             Jwts.parser()
                     .setSigningKey(jwtProperties.getSecretKey())
                     .parseClaimsJws(token);
-
+            System.out.println("Validating token.");
             return true;
         } catch (Exception e) {
+            System.out.println("Token validation failed: " + e.getMessage());
             return false;
         }
     }
-
 
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
         Set<SimpleGrantedAuthority> authorities = Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
 
-        return new UsernamePasswordAuthenticationToken(new org.springframework.security.core.userdetails.User(claims.getSubject
-                (), "", authorities), token, authorities);
+        return new UsernamePasswordAuthenticationToken(
+                new org.springframework.security.core.userdetails.User(claims.getSubject(), "", authorities),
+                token,
+                authorities
+        );
     }
 
     public Long getUserId(String token) {

@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
+
     private final TokenProvider tokenProvider;
 
     private final static String HEADER_AUTHORIZATION = "Authorization";
@@ -21,14 +22,25 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(
             HttpServletRequest request,
             HttpServletResponse response,
-            FilterChain filterChain)  throws ServletException, IOException {
+            FilterChain filterChain) throws ServletException, IOException {
+
+        // 요청의 모든 헤더를 출력
+        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
+            System.out.println("Header: " + headerName + " = " + request.getHeader(headerName));
+        });
 
         String authorizationHeader = request.getHeader(HEADER_AUTHORIZATION);
         String token = getAccessToken(authorizationHeader);
 
-        if (tokenProvider.validToken(token)) {
+        System.out.println("Authorization Header: " + authorizationHeader);
+        System.out.println("Extracted Token: " + token);
+
+        if (token != null && tokenProvider.validToken(token)) {
             Authentication authentication = tokenProvider.getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println("Token is valid. User authenticated.");
+        } else {
+            System.out.println("Token is invalid or missing.");
         }
 
         filterChain.doFilter(request, response);
@@ -38,7 +50,6 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         if (authorizationHeader != null && authorizationHeader.startsWith(TOKEN_PREFIX)) {
             return authorizationHeader.substring(TOKEN_PREFIX.length());
         }
-
         return null;
     }
 }

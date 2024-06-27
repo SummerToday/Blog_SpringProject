@@ -42,6 +42,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         addRefreshTokenToCookie(request, response, refreshToken);
 
         String accessToken = tokenProvider.generateToken(user, ACCESS_TOKEN_DURATION);
+        System.out.println("Access Token: " + accessToken);
         String targetUrl = getTargetUrl(accessToken);
 
         clearAuthenticationAttributes(request, response);
