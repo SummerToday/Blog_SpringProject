@@ -17,12 +17,13 @@ SpringBoot, AWS, Github Actions를 활용한 블로그 서비스.
 
 
 ### Devlopment
-<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/AWS Elastic Beanstalk -232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white"><img src="https://img.shields.io/badge/amazonrds-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white"><img src="https://img.shields.io/badge/githubactions-\2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
-
+<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/AWS Elastic Beanstalk -232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white"><img src="https://img.shields.io/badge/amazonrds-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white"><img src="https://img.shields.io/badge/githubactions-\2088FF?style=for-the-badge&logo=githubactions&logoColor=white"><img src="https://img.shields.io/badge/amazonroute53-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white">
 
 <br></br>
 
 ## 🔎 프로젝트 구현 내용
+
+- AWS Route 53를 이용한 DNS 호스팅 구성
 
 - 구글 SNS 로그인 구현
 
