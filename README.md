@@ -28,10 +28,13 @@ SpringBoot, AWS, Github Actions를 활용한 블로그 서비스.
 
 - 게시글 등록·수정·삭제 기능 구현
 
+- 타인의 게시글 수정·삭제 방지 기능 구현
+
 - AWS RDS를 활용한 데이터베이스 구축
 
 - AWS Elastic Beanstalk 배포
 
 - Github Actions를 이용한 CI/CD 파이프라인 구성
+
 
 <br>
