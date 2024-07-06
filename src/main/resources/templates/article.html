@@ -75,6 +75,16 @@
     .btn-secondary:hover {
       background-color: #5563e7;
     }
+
+    .btn-back {
+      background-color: #6c757d;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: #5a6268;
+    }
   </style>
 </head>
 <body>
@@ -95,11 +105,16 @@
         <section class="mb-5">
           <p class="fs-5 mb-4" th:text="${article.content}"></p>
         </section>
-        <button type="button" id="modify-btn"
-                th:onclick="|location.href='@{/new-article?id={articleId}(articleId=${article.id})}'|"
-                class="btn btn-primary btn-sm">수정</button>
-        <button type="button" id="delete-btn"
-                class="btn btn-secondary btn-sm">삭제</button>
+        <div class="d-flex justify-content-between">
+          <div>
+            <button type="button" id="modify-btn"
+                    th:onclick="|location.href='@{/new-article?id={articleId}(articleId=${article.id})}'|"
+                    class="btn btn-primary btn-sm">수정</button>
+            <button type="button" id="delete-btn"
+                    class="btn btn-secondary btn-sm">삭제</button>
+          </div>
+          <button type="button" class="btn btn-back btn-sm" onclick="location.href='/articleList.html'">뒤로가기</button>
+        </div>
       </article>
     </div>
   </div>
