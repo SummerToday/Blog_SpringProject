@@ -39,3 +39,25 @@ SpringBoot, AWS, Github Actions를 활용한 블로그 서비스.
 
 
 <br>
+
+## 프로젝트 주요 구현 결과
+
+- 로그인 화면
+  > ![image](https://github.com/SummerToday/Blog_SpringProject/assets/88650436/d2dc9df2-f147-4ae9-aa81-39176ff522b7)
+
+<br>
+
+- 게시글 리스트 화면
+  > ![image](https://github.com/SummerToday/Blog_SpringProject/assets/88650436/abc8ccb4-0ce6-402d-88af-34e1c4bf3e07)
+
+<br>
+
+- 게시글 작성 화면
+  > ![image](https://github.com/SummerToday/Blog_SpringProject/assets/88650436/572d824c-3461-4297-adb1-03a54779bf38)
+
+<br>
+
+## 프로젝트 접속 링크
+> http://inkyung.site/login
+
+
