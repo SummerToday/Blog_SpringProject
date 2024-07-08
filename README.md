@@ -21,7 +21,7 @@ SpringBoot, AWS, Github Actions를 활용한 블로그 서비스.
 
 <br></br>
 
-## 🔎 프로젝트 구현 내용
+## 🔎 프로젝트 주요 구현 내용
 
 - AWS Route 53를 이용한 DNS 호스팅 구성
 
