@@ -58,6 +58,6 @@ SpringBoot, AWS, Github Actions를 활용한 블로그 서비스.
 <br>
 
 ## 프로젝트 접속 링크
-> http://inkyung.site/login
+> https://inkyung.site/login
 
 
