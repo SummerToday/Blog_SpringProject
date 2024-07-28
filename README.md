@@ -17,7 +17,7 @@ SpringBoot, AWS, Github Actions를 활용한 블로그 서비스.
 
 
 ### Devlopment
-<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/AWS Elastic Beanstalk -232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white"><img src="https://img.shields.io/badge/amazonrds-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white"><img src="https://img.shields.io/badge/githubactions-\2088FF?style=for-the-badge&logo=githubactions&logoColor=white"><img src="https://img.shields.io/badge/amazonroute53-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white">
+<img src="https://img.shields.io/badge/spring boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img src="https://img.shields.io/badge/AWS Elastic Beanstalk -232F3E?style=for-the-badge&logo=amazonwebservices&logoColor=white"><img src="https://img.shields.io/badge/amazon rds-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white"><img src="https://img.shields.io/badge/github actions-\2088FF?style=for-the-badge&logo=githubactions&logoColor=white"><img src="https://img.shields.io/badge/amazon route53-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white"><img src="https://img.shields.io/badge/aws elastic load balancing-8C4FFF?style=for-the-badge&logo=awselasticloadbalancing&logoColor=white"><img src="https://img.shields.io/badge/aws certificate manager-EF2D5E?style=for-the-badge&logo=awscertificatemanager&logoColor=white">
 
 <br></br>
 
@@ -25,13 +25,17 @@ SpringBoot, AWS, Github Actions를 활용한 블로그 서비스.
 
 - AWS Route 53를 이용한 DNS 호스팅 구성
 
+- AWS Certificate Manager를 활용하여 HTTPS 통신 구현
+
+- AWS Elastic Load Balencing과 EC2 Auto Scailing 연동을 통한 가용성 유지
+
 - 구글 SNS 로그인 구현
 
 - 게시글 등록·수정·삭제 기능 구현
 
 - 타인의 게시글 수정·삭제 방지 기능 구현
 
-- AWS RDS를 활용한 데이터베이스 구축
+- AWS RDS for MySQL을 활용한 데이터베이스 구축
 
 - AWS Elastic Beanstalk 배포
 
